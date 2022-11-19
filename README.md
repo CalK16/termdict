@@ -39,4 +39,6 @@ cd termdict
 go build -o dict
 echo "alias dict='$(pwd)/dict'" >> ~/.zshrc
 ```
-```
+## Special Thanks
+
+This dictionary uses [freeDictionaryAPI](https://github.com/meetDeveloper/freeDictionaryAPI) as the source. This tool couldn't have done without the API.
