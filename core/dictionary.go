@@ -2,7 +2,6 @@ package core
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"strings"
 	"text/template"
@@ -56,12 +55,10 @@ func TerminalFormatPrint(word Word) {
 func Query(spell string) *Word {
 	found, word := read(spell)
 	if found {
-		log.Default().Println("Found in local database")
 		return &word
 	}
 	word, err := Crawl(spell)
 	if err != nil {
-		fmt.Println(err)
 		return nil
 	}
 	save(word)

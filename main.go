@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 
 	"github.com/bb-ben/termdict/core"
 )
@@ -12,6 +13,10 @@ func main() {
 	flag.Parse()
 	if word != nil {
 		ret := core.Query(*word)
-		core.TerminalFormatPrint(*ret)
+		if ret != nil {
+			core.TerminalFormatPrint(*ret)
+		} else {
+			fmt.Println("No word found")
+		}
 	}
 }
