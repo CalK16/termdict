@@ -2,13 +2,25 @@ package core
 
 import (
 	"database/sql"
+	"log"
+	"os"
+	"path/filepath"
 
 	_ "github.com/mattn/go-sqlite3"
 )
 
+func db_path() string {
+	dirname, err := os.UserHomeDir()
+	if err != nil {
+		log.Fatal(err)
+	}
+	os.Mkdir(filepath.Join(dirname, ".termdict"), 0755)
+	return filepath.Join(dirname, ".termdict", "termdict.db")
+}
+
 func init() {
 	// Create database if not exists
-	db, err := sql.Open("sqlite3", "./my-dictionary.db")
+	db, err := sql.Open("sqlite3", db_path())
 	if err != nil {
 		panic(err)
 	}
@@ -31,7 +43,7 @@ func init() {
 }
 
 func save(word Word) {
-	db, err := sql.Open("sqlite3", "./my-dictionary.db")
+	db, err := sql.Open("sqlite3", db_path())
 	if err != nil {
 		panic(err)
 	}
@@ -59,7 +71,7 @@ func save(word Word) {
 }
 
 func read(spell string) (bool, Word) {
-	db, err := sql.Open("sqlite3", "./my-dictionary.db")
+	db, err := sql.Open("sqlite3", db_path())
 	if err != nil {
 		panic(err)
 	}
