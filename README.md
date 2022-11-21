@@ -2,6 +2,8 @@
 
 A CLI dictionary written in Go.
 
+![screenshot-windows-terminal](https://user-images.githubusercontent.com/70356237/203070960-8f310abc-99fd-4ad1-9c71-16891ab5a4f5.png)
+
 ## Preview
 
 ```bash
